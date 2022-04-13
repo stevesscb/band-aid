@@ -9,3 +9,88 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Type {
+  LEADGUITAR
+  RYTHMGUITAR
+  ACOUSTICGUITAR
+  DRUMS
+  BASS
+  VOCALS
+  KEYBOARD
+}
+
+enum Level {
+  BEGINNER
+  INTERMEDIATE
+  PROFESSIONAL
+}
+
+model User {
+  id               Int          @id @default(autoincrement())
+  displayName      String
+  age              Int
+  bio              String
+  image            String
+  lookingForBand   Boolean      @default(false)
+  portraits        Portrait[]
+  instruments      Instrument[]
+  tracks           Track[]
+  commentsReceived Comment[]    @relation(name: "UserCommentsReceived")
+  commentsGiven    Comment[]    @relation(name: "UserCommentsGiven")
+  messagesReceived Message[]    @relation(name: "UserMessageReceived")
+  messagesGiven    Message[]    @relation(name: "UserMessageGiven")
+  likesReceived    Like[]       @relation(name: "UserLikesReceived")
+  likesGiven       Like[]       @relation(name: "UserLikesGiven")
+}
+
+model Portrait {
+  id     Int    @id @default(autoincrement())
+  file   String
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int?
+}
+
+model Instrument {
+  id     Int   @id @default(autoincrement())
+  type   Type  @default(VOCALS)
+  level  Level @default(BEGINNER)
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int?
+}
+
+model Track {
+  id     Int    @id @default(autoincrement())
+  name   String
+  file   String
+  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int?
+}
+
+model Comment {
+  id       Int    @id @default(autoincrement())
+  content  String
+  target   User?  @relation(name: "UserCommentsReceived", fields: [targetId], references: [id], onDelete: Cascade)
+  targetId Int?
+  owner    User?  @relation(name: "UserCommentsGiven", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId  Int?
+}
+
+model Message {
+  id       Int    @id @default(autoincrement())
+  content  String
+  target   User?  @relation(name: "UserMessageReceived", fields: [targetId], references: [id], onDelete: Cascade)
+  targetId Int?
+  owner    User?  @relation(name: "UserMessageGiven", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId  Int?
+}
+
+model Like {
+  id       Int   @id @default(autoincrement())
+  target   User? @relation(name: "UserLikesReceived", fields: [targetId], references: [id], onDelete: Cascade)
+  targetId Int?
+  owner    User? @relation(name: "UserLikesGiven", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId  Int?
+
+  @@unique([ownerId, targetId])
+}
