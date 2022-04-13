@@ -27,12 +27,17 @@ enum Level {
 }
 
 model User {
-  id               Int          @id @default(autoincrement())
-  displayName      String
-  age              Int
-  bio              String
-  image            String
-  lookingForBand   Boolean      @default(false)
+  id               String       @id @default(cuid())
+  name             String?
+  email            String?      @unique
+  emailVerified    DateTime?
+  image            String?
+  displayName      String?
+  age              Int?
+  bio              String?
+  lookingForBand   Boolean?     @default(false)
+  accounts         Account[]
+  sessions         Session[]
   portraits        Portrait[]
   instruments      Instrument[]
   tracks           Track[]
@@ -45,52 +50,87 @@ model User {
 }
 
 model Portrait {
-  id     Int    @id @default(autoincrement())
+  id     Int     @id @default(autoincrement())
   file   String
-  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String?
 }
 
 model Instrument {
-  id     Int   @id @default(autoincrement())
-  type   Type  @default(VOCALS)
-  level  Level @default(BEGINNER)
-  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int?
+  id     Int     @id @default(autoincrement())
+  type   Type    @default(VOCALS)
+  level  Level   @default(BEGINNER)
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String?
 }
 
 model Track {
-  id     Int    @id @default(autoincrement())
+  id     Int     @id @default(autoincrement())
   name   String
   file   String
-  user   User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String?
 }
 
 model Comment {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   content  String
-  target   User?  @relation(name: "UserCommentsReceived", fields: [targetId], references: [id], onDelete: Cascade)
-  targetId Int?
-  owner    User?  @relation(name: "UserCommentsGiven", fields: [ownerId], references: [id], onDelete: Cascade)
-  ownerId  Int?
+  target   User?   @relation(name: "UserCommentsReceived", fields: [targetId], references: [id], onDelete: Cascade)
+  targetId String?
+  owner    User?   @relation(name: "UserCommentsGiven", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId  String?
 }
 
 model Message {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   content  String
-  target   User?  @relation(name: "UserMessageReceived", fields: [targetId], references: [id], onDelete: Cascade)
-  targetId Int?
-  owner    User?  @relation(name: "UserMessageGiven", fields: [ownerId], references: [id], onDelete: Cascade)
-  ownerId  Int?
+  target   User?   @relation(name: "UserMessageReceived", fields: [targetId], references: [id], onDelete: Cascade)
+  targetId String?
+  owner    User?   @relation(name: "UserMessageGiven", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId  String?
 }
 
 model Like {
-  id       Int   @id @default(autoincrement())
-  target   User? @relation(name: "UserLikesReceived", fields: [targetId], references: [id], onDelete: Cascade)
-  targetId Int?
-  owner    User? @relation(name: "UserLikesGiven", fields: [ownerId], references: [id], onDelete: Cascade)
-  ownerId  Int?
+  id       Int     @id @default(autoincrement())
+  target   User?   @relation(name: "UserLikesReceived", fields: [targetId], references: [id], onDelete: Cascade)
+  targetId String?
+  owner    User?   @relation(name: "UserLikesGiven", fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId  String?
 
   @@unique([ownerId, targetId])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
