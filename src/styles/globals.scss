@@ -37,6 +37,10 @@
 
 /*--------------- home page start   -------------------*/
 
+#homePageContainer {
+  background-color:rgb(59, 59, 59);
+}
+
 .white-bg {
   background-color:rgba(226, 234, 242, 0.7);
   padding: 20px 0 20px 0;
@@ -77,7 +81,15 @@
   font-family: 'Poppins', sans-serif;
 }
 
-
+#homePageContainer .cards {
+  padding-bottom: 20px;
+}
+#homePageContainer .cards h6 {
+  text-align: center;
+  font-size: 1.5em;
+  padding: 10px;
+  color:rgb(200, 200, 200);
+}
 
 /*--------------- home page end   -------------------*/
 

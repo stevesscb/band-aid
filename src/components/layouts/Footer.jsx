@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function CompsLayoutsFooter() {
   return (
-    <footer className="fixed-bottom align-items-center">
+    <footer className="align-items-center">
       <Container>
 
         <div id="footer-links" className="d-flex justify-content-center p-3">
