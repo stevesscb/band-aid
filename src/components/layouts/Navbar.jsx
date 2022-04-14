@@ -29,7 +29,7 @@ export default function CompsLayoutsNavbar() {
         </div>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse class="navbar-collapse">
+        <Navbar.Collapse className="navbar-collapse">
           <Nav className="ms-auto">
             <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
             <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
