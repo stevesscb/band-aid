@@ -4,7 +4,8 @@ import { appWithTranslation } from 'next-i18next'
 import { SessionProvider } from 'next-auth/react'
 
 import appWithSession from '@/hoc/appWithSession'
-import CompsLayoutsNavbar from '@/compontents/layouts/Navbar'
+import CompsLayoutsNavbar from '@/components/layouts/Navbar'
+import CompsLayoutsFooter from '@/components/layouts/Footer'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       <SessionProvider session={session}>
         <CompsLayoutsNavbar />
         <Component {...pageProps} />
+        <CompsLayoutsFooter />
       </SessionProvider>
       <ToastContainer
         position="bottom-left"

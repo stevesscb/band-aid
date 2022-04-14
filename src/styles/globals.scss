@@ -1,2 +1,56 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~react-toastify/dist/ReactToastify";
+
+/*--------------- navbar start -------------------*/
+
+#navbar .nav-link  {
+  color: rgb(200, 200, 200);
+  border-left: 2px solid transparent;
+  margin-left: 2em;
+}
+
+#navbar .nav-link:hover {
+  border-left: 2px solid rgb(139, 139, 197);
+  background: linear-gradient(to right, rgba(140, 140, 206, 0.3), rgba(143, 143, 219, 0));
+}
+
+@media (min-width: 992px) {
+  #navbar .navbar-collapse {
+    height: 1px;
+    min-height: 52px;
+  }
+
+  #navbar .nav-link {
+    border-left: none;
+    border-top: 2px solid transparent;
+  }
+
+  #navbar .nav-link:hover {
+    border-left: none;
+    border-top: 2px solid rgb(139, 139, 197);
+    background: linear-gradient(to right, rgba(140, 140, 206, 0.3), rgba(143, 143, 219, 0));
+  }
+}
+
+
+/*--------------- navbar end   -------------------*/
+
+/*--------------- footer start   -------------------*/
+
+footer {
+  background-color: rgb(42, 42, 43);
+}
+
+footer .nav-link {
+  color: rgb(200, 200, 200);
+}
+
+#socials-container {
+  border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+#copyright-container p {
+  color: rgb(200, 200, 200);
+}
+
+/*--------------- footer end   -------------------*/

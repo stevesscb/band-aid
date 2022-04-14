@@ -17,6 +17,7 @@
     "dotenv-cli": "^5.1.0",
     "formik": "^2.2.9",
     "immer": "^9.0.12",
+    "mdb-react-ui-kit": "^3.0.0",
     "next": "^12.1.4",
     "next-auth": "^4.3.1",
     "next-connect": "^0.12.2",
