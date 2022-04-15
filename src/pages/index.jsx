@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
@@ -15,12 +16,14 @@ export default function Home() {
 
       <div className="homePageBanner">
         <div className="white-bg">
-          <h4 className="indent-heading">
-            <span>WE ARE ON A</span>
-            <span>MISSION</span>
-            <span>TO CONNECT</span>
-            <span>MUSICIANS IN HK!</span>
-          </h4>
+          <Container>
+            <h4 className="indent-heading">
+              <span>WE ARE ON A</span>
+              <span className=" animate__animated animate__backInLeft">MISSION</span>
+              <span>TO CONNECT</span>
+              <span className=" animate__animated animate__backInRight">MUSICIANS IN HK!</span>
+            </h4>
+          </Container>
         </div>
       </div>
 
@@ -29,7 +32,7 @@ export default function Home() {
         <Row xs={1} md={4} className="g-4">
           {Array.from({ length: 4 }).map((_, idx) => (
             <Col>
-              <Card>
+              <Card className="grow">
                 <Card.Img className="card-image" variant="top" src="/images/musician1.jpg" />
                 <Card.Body>
                   <Card.Title>Card title</Card.Title>
@@ -42,7 +45,22 @@ export default function Home() {
             </Col>
           ))}
         </Row>
+        <div className="d-flex justify-content-center p-3">
+          <button type="button" className="grow-btn btn btn-light">See all Musicians</button>
+        </div>
       </Container>
+
+      <div className="homePageBannerBottom">
+        <div className="bg-bottom">
+          <Container>
+            <h6 className="indent-heading-bottom">
+              <span>Sign up TODAY</span>
+              <span>to join the FASTEST growing</span>
+              <span>COMMUNITY in HONG KONG!</span>
+            </h6>
+          </Container>
+        </div>
+      </div>
 
     </div>
   )
