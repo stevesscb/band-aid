@@ -33,7 +33,7 @@ export default function CompsLayoutsNavbar() {
           <Nav className="ms-auto">
             <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
             <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
-            <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Profile</a></Nav.Link>
+            <Nav.Link as={Link} href="/my"><a className="nav-link d-table-cell">Profile</a></Nav.Link>
             {
               session ? (
                 <Nav.Link onClick={() => signOut()}>Sign Out</Nav.Link>
