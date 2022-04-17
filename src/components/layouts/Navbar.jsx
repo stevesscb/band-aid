@@ -36,7 +36,7 @@ export default function CompsLayoutsNavbar() {
                 <>
                   <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
                   <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
-                  <Nav.Link as={Link} href="/my"><a className="nav-link d-table-cell">My Profile</a></Nav.Link>
+                  <Nav.Link as={Link} href="/my/profile"><a className="nav-link d-table-cell">My Profile</a></Nav.Link>
                   <Nav.Link onClick={() => signOut()}>Sign Out</Nav.Link>
                 </>
               ) : (

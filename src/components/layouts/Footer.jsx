@@ -6,12 +6,13 @@ import Image from 'next/image'
 export default function CompsLayoutsFooter() {
   return (
     <footer className="align-items-center">
+
       <Container>
 
         <div id="footer-links" className="d-flex justify-content-center p-3">
           <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
           <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
-          <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Profile</a></Nav.Link>
+          <Nav.Link as={Link} href="/my/profile"><a className="nav-link d-table-cell">Profile</a></Nav.Link>
         </div>
 
         <div id="socials-container">

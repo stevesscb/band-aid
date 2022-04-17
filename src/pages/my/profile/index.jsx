@@ -6,6 +6,7 @@ import { Button, Switch } from '@mui/material'
 import ButtonGroup from '@mui/material/ButtonGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import ReactAudioPlayer from 'react-audio-player'
+import Link from 'next/link'
 
 export default function MyIndex() {
   return (
@@ -73,9 +74,11 @@ export default function MyIndex() {
                   label="In a Band?"
                   labelPlacement="top"
                 />
-                <Button size="medium">
-                  Edit
-                </Button>
+                <Link href="/my/profile/edit" passHref>
+                  <Button size="medium">
+                    Edit
+                  </Button>
+                </Link>
               </ButtonGroup>
             </div>
 
