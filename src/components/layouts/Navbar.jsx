@@ -12,7 +12,6 @@ export default function CompsLayoutsNavbar() {
   return (
     <Navbar id="navbar" bg="dark" variant="dark" expand="lg">
       <Container>
-
         <div className="d-flex align-items-center">
           <Navbar.Brand id="bannerLogo" className="navbar-brand text-center">
             <Image
