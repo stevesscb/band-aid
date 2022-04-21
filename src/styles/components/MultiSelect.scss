@@ -1,0 +1,11 @@
+.multiselect-container {
+  &.custom-invalid {
+    .search-wrapper {
+      @extend .is-invalid;
+    }
+  }
+
+  .search-wrapper {
+    @extend .form-control;
+  }
+}

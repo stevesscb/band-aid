@@ -2,90 +2,96 @@ import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
 import { Carousel } from 'react-bootstrap'
 import Image from 'next/image'
-import { Button, Switch } from '@mui/material'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
 import ReactAudioPlayer from 'react-audio-player'
-import Link from 'next/link'
+
+import CompsLayoutsEditModal from '@/components/layouts/EditModal'
 
 export default function MyIndex() {
   return (
     <div id="profile-container">
+
       <Head>
         <title>BAND AID | MY PROFILE</title>
       </Head>
 
-      <Container className="profile p-3">
-        <div className="carousel-container">
+      <Container className="edit-profile p-3">
 
-          <Carousel fade className="carousel-fade">
-            <Carousel.Item className="d-flex justify-content-center">
-              <Image
-                className="d-block w-100"
-                src="/images/musician1.jpg"
-                alt="First slide"
-                width={400}
-                height={400}
-              />
-            </Carousel.Item>
+        <div className="top-section">
 
-            <Carousel.Item className="d-flex justify-content-center">
-              <Image
-                className="d-block w-100"
-                src="/images/musician1.jpg"
-                alt="Second slide"
-                width={400}
-                height={400}
-              />
-            </Carousel.Item>
-
-            <Carousel.Item className="d-flex justify-content-center">
-              <Image
-                className="d-block w-100"
-                src="/images/musician1.jpg"
-                alt="Third slide"
-                width={400}
-                height={400}
-              />
-            </Carousel.Item>
-          </Carousel>
-        </div>
-
-        <div className="details-section">
-          <h2 className="text-center pt-3">My Profile</h2>
-
-          <div className="section1">
-
-            <ul className="personal-details">
-              <li>Username:</li>
-              <li>Email:</li>
-              <li>Age:</li>
-              <li>Instrument:</li>
-            </ul>
-
-            <div className="details-buttons">
-              <ButtonGroup
-                orientation="vertical"
-                aria-label="vertical outlined button group"
-              >
-                <FormControlLabel
-                  value="top"
-                  control={<Switch color="primary" />}
-                  label="In a Band?"
-                  labelPlacement="top"
+          <div className="image-container">
+            <Carousel fade className="edit-carousel-fade">
+              <Carousel.Item className="d-flex justify-content-center">
+                <Image
+                  className="d-block w-100"
+                  src="/images/musician1.jpg"
+                  alt="First slide"
+                  width={400}
+                  height={400}
                 />
-                <Link href="/my/profile/edit" passHref>
-                  <Button size="medium">
-                    Edit
-                  </Button>
-                </Link>
-              </ButtonGroup>
-            </div>
+              </Carousel.Item>
 
+              <Carousel.Item className="d-flex justify-content-center">
+                <Image
+                  className="d-block w-100"
+                  src="/images/musician1.jpg"
+                  alt="Second slide"
+                  width={400}
+                  height={400}
+                />
+              </Carousel.Item>
+
+              <Carousel.Item className="d-flex justify-content-center">
+                <Image
+                  className="d-block w-100"
+                  src="/images/musician1.jpg"
+                  alt="Third slide"
+                  width={400}
+                  height={400}
+                />
+              </Carousel.Item>
+            </Carousel>
           </div>
 
-          <div className="profile-section2">
-            <div className="media">
+          <div className="details-heading">
+            <div className="text-center">
+              <h2 className="py-3">My Profile</h2>
+              <CompsLayoutsEditModal />
+            </div>
+
+            <div className="details-table">
+              <dl className="edit-personal-details">
+                <dt>Username:</dt>
+                <dd>JonDoe2022</dd>
+
+                <dt>Email:</dt>
+                <dd>jondoe2022@gmail.com</dd>
+
+                <dt>Age:</dt>
+                <dd>24</dd>
+
+                <dt>Instrument:</dt>
+                <dd>Drums, Vocals</dd>
+
+                <dt>In A Band:</dt>
+                <dd>Yes</dd>
+              </dl>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div className="bottom">
+
+          <div className="bio-container">
+            <div className="edit-bio p-3">
+              <h6 className="text-center">About Me:</h6>
+              <p>d it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including v</p>
+            </div>
+          </div>
+
+          <div className="media-container">
+            <div className="edit-media">
               <h6>Tracks</h6>
               <ReactAudioPlayer
                 src="my_audio_file.ogg"
@@ -103,17 +109,12 @@ export default function MyIndex() {
                 controls
               />
             </div>
-
-          </div>
-
-          <div className="bio p-3">
-            <h6 className="text-center">About Me:</h6>
-            <p>d it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including v</p>
           </div>
 
         </div>
 
       </Container>
+
     </div>
   )
 }

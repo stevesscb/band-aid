@@ -2,6 +2,8 @@
 @import "~react-toastify/dist/ReactToastify";
 @import "~animate.css";
 
+@import "./components/MultiSelect.scss";
+
 .grow.card, .grow-btn {
 transition: all .2s ease-in-out;
 }
@@ -124,6 +126,17 @@ color:rgb(255, 255, 255);
 
 /*--------------- musician page start   -------------------*/
 
+.media-container {
+  text-align: center;
+}
+
+.edit-profile {
+background-color:rgb(44, 44, 44);
+color:rgb(255, 255, 255);
+border-top: solid 2px rgb(255, 255, 255);
+border-bottom: solid 2px rgb(255, 255, 255);
+}
+
 #profile-container {
   padding: 10px 0 10px 0;
   display: flex;
@@ -131,53 +144,61 @@ color:rgb(255, 255, 255);
   background-color:rgb(78, 78, 78);
 }
 
-.profile {
-  background-color:rgb(44, 44, 44);
-  color:rgb(255, 255, 255);
-  border-top: solid 2px rgb(255, 255, 255);
-  border-bottom: solid 2px rgb(255, 255, 255);
-}
-
-.media {
-  text-align: center;
-  padding: 20px;
-}
-
-ul.personal-details {
-  padding-left: 1rem;
-}
-
-.personal-details li {
-  list-style: none;
-}
-
-  @media (min-width: 992px) {
-    .profile {
-      display: flex;
-      justify-content: center;
-      max-width: 900px;
+@media (min-width: 992px) {
+    .edit-profile {
+      background-color:rgb(44, 44, 44);
+      color:rgb(255, 255, 255);
+      max-width: 1000px;
       border: solid 2px rgb(255, 255, 255);
     }
 
-    .carousel-fade {
-      width: 400px;
-    }
-
-    .section1 {
+    .top-section {
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
     }
 
-    .profile-section2 {
+    .bottom {
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+    }
+
+    .image-container {
+      text-align: center;
+      width: 50%;
+    }
+
+    .edit-carousel-fade {
+      width: 100%;
+    }
+
+    .details-table {
+      margin-left: 20px;
+    }
+
+    .details-heading {
+      width: 50%;
+    }
+
+    .bio-container {
+      width: 50%;
+    }
+
+    .media-container {
+      text-align: center;
+      width: 50%;
     }
   }
 
 
-
 /*--------------- musician page end   -------------------*/
+
+/*--------------- edit modal start   -------------------*/
+
+
+
+
+
+/*--------------- edit modal end   -------------------*/
 
 /*--------------- footer start   -------------------*/
 

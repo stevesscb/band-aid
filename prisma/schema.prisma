@@ -33,7 +33,6 @@ model User {
   emailVerified    DateTime?
   image            String?
   displayName      String?
-  age              Int?
   bio              String?
   lookingForBand   Boolean?     @default(false)
   accounts         Account[]
@@ -59,7 +58,6 @@ model Portrait {
 model Instrument {
   id     Int     @id @default(autoincrement())
   type   Type    @default(VOCALS)
-  level  Level   @default(BEGINNER)
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String?
 }
