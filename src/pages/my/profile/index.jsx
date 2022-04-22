@@ -73,9 +73,6 @@ export function MyIndex() {
                 <dt>Email:</dt>
                 <dd>jondoe2022@gmail.com</dd>
 
-                <dt>Age:</dt>
-                <dd>24</dd>
-
                 <dt>Instrument:</dt>
                 <dd>Drums, Vocals</dd>
 
