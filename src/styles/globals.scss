@@ -1,5 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~react-toastify/dist/ReactToastify";
+@import "~animate.css";
+
+@import "./components/MultiSelect.scss";
+
+.grow.card, .grow-btn {
+transition: all .2s ease-in-out;
+}
+
+.grow.card:hover, .grow-btn:hover {
+  transform: scale(1.02);
+}
 
 /*--------------- navbar start -------------------*/
 
@@ -9,31 +20,185 @@
   margin-left: 2em;
 }
 
-#navbar .nav-link:hover {
-  border-left: 2px solid rgb(139, 139, 197);
-  background: linear-gradient(to right, rgba(140, 140, 206, 0.3), rgba(143, 143, 219, 0));
+  #navbar .nav-link:hover {
+    border-left: 2px solid rgb(139, 139, 197);
+    background: linear-gradient(to right, rgba(140, 140, 206, 0.3), rgba(143, 143, 219, 0));
+  }
+
+  @media (min-width: 992px) {
+    #navbar .navbar-collapse {
+      height: 1px;
+      min-height: 52px;
+    }
+
+    #navbar .nav-link {
+      border-left: none;
+      border-top: 2px solid transparent;
+    }
+
+    #navbar .nav-link:hover {
+      border-left: none;
+      border-top: 2px solid rgb(139, 139, 197);
+      background: linear-gradient(to right, rgba(140, 140, 206, 0.3), rgba(143, 143, 219, 0));
+    }
+  }
+/*--------------- navbar end   -------------------*/
+
+
+/*--------------- home page start   -------------------*/
+
+#homePageContainer {
+  background-color:rgb(44, 44, 44);
+
+  .white-bg {
+    background-color:rgba(226, 234, 242, 0.7);
+    padding: 20px 0 20px 0;
+  }
+
+  .homePageBanner {
+  background-image: url(/images/banner-background.jpg);
+  background-position: center;
+  background-size: cover;
+}
+  .indent-heading span {
+    display: block;
+    line-height: 1;
+    text-align: center;
+    padding: 5px 0 10px 0;
+  }
+
+  .indent-heading span:first-child {
+    font-style: italic;
+    font-size: 1.4em;
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  .indent-heading span:nth-child(2) {
+    font-size: 3em;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .indent-heading span:nth-child(3) {
+    font-style: italic;
+    font-size: 1.4em;
+    font-family: 'Bebas Neue', cursive;
+  }
+
+  .indent-heading span:nth-child(4) {
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+#homePageContainer .cards h6 {
+text-align: center;
+font-size: 1.5em;
+padding: 10px;
+color:rgb(255, 255, 255);
+}
+
+#homePageContainer .cards {
+  padding-bottom: 20px;
+}
+
+  .bg-bottom {
+    background-color:rgba(226, 234, 242, 0.8);
+    padding: 20px 0 20px 0;
+  }
+
+  .homePageBannerBottom {
+    background-image: url(/images/group.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .indent-heading-bottom span {
+    display: block;
+    line-height: 1;
+    text-align: center;
+    padding: 5px 0 10px 0;
+    font-size: 2.5em;
+  }
+
+
+
+/*--------------- home page end   -------------------*/
+
+/*--------------- musician page start   -------------------*/
+
+.media-container {
+  text-align: center;
+}
+
+.edit-profile {
+background-color:rgb(44, 44, 44);
+color:rgb(255, 255, 255);
+border-top: solid 2px rgb(255, 255, 255);
+border-bottom: solid 2px rgb(255, 255, 255);
+}
+
+#profile-container {
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  background-color:rgb(78, 78, 78);
 }
 
 @media (min-width: 992px) {
-  #navbar .navbar-collapse {
-    height: 1px;
-    min-height: 52px;
+    .edit-profile {
+      background-color:rgb(44, 44, 44);
+      color:rgb(255, 255, 255);
+      max-width: 1000px;
+      border: solid 2px rgb(255, 255, 255);
+    }
+
+    .top-section {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .image-container {
+      text-align: center;
+      width: 50%;
+    }
+
+    .edit-carousel-fade {
+      width: 100%;
+    }
+
+    .details-table {
+      margin-left: 20px;
+    }
+
+    .details-heading {
+      width: 50%;
+    }
+
+    .bio-container {
+      width: 50%;
+    }
+
+    .media-container {
+      text-align: center;
+      width: 50%;
+    }
   }
 
-  #navbar .nav-link {
-    border-left: none;
-    border-top: 2px solid transparent;
-  }
 
-  #navbar .nav-link:hover {
-    border-left: none;
-    border-top: 2px solid rgb(139, 139, 197);
-    background: linear-gradient(to right, rgba(140, 140, 206, 0.3), rgba(143, 143, 219, 0));
-  }
-}
+/*--------------- musician page end   -------------------*/
+
+/*--------------- edit modal start   -------------------*/
 
 
-/*--------------- navbar end   -------------------*/
+
+
+
+/*--------------- edit modal end   -------------------*/
 
 /*--------------- footer start   -------------------*/
 
