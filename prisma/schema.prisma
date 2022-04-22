@@ -10,16 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Type {
-  LEADGUITAR
-  RYTHMGUITAR
-  ACOUSTICGUITAR
-  DRUMS
-  BASS
-  VOCALS
-  KEYBOARD
-}
-
 enum Level {
   BEGINNER
   INTERMEDIATE
@@ -57,9 +47,11 @@ model Portrait {
 
 model Instrument {
   id     Int     @id @default(autoincrement())
-  type   Type    @default(VOCALS)
+  type   String  @default("Vocals")
   user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String?
+
+  @@unique([type, userId])
 }
 
 model Track {

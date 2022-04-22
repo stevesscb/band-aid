@@ -29,9 +29,10 @@ export default function Home() {
 
       <Container className="cards">
         <h6>Newest Members</h6>
+
         <Row xs={1} md={4} className="g-4">
           {Array.from({ length: 4 }).map((_, idx) => (
-            <Col>
+            <Col key={idx}>
               <Card className="grow">
                 <Card.Img className="card-image" variant="top" src="/images/musician1.jpg" />
                 <Card.Body>
@@ -45,6 +46,7 @@ export default function Home() {
             </Col>
           ))}
         </Row>
+
         <div className="d-flex justify-content-center p-3">
           <button type="button" className="grow-btn btn btn-light">See all Musicians</button>
         </div>
@@ -61,7 +63,6 @@ export default function Home() {
           </Container>
         </div>
       </div>
-
     </div>
   )
 }

@@ -1,9 +1,10 @@
 import MultiSelect from 'multiselect-react-dropdown'
 
-function CompsLayoutsMultiSelect({ field, form, config }) {
+function CompsInputsMultiSelect({ field, form, config }) {
   const isInvalid = form.errors?.[field.name]
                 && form.touched?.[field.name]
                 && 'custom-invalid'
+
   return (
     <>
       <MultiSelect
@@ -21,9 +22,13 @@ function CompsLayoutsMultiSelect({ field, form, config }) {
           form.setFieldValue(field.name, values)
         }}
       />
-      <div className={`${isInvalid && 'd-block'} invalid-feedback`}>{form.errors?.[field.name]}</div>
+      <div className={`${isInvalid && 'd-block'} invalid-feedback`}>
+        {
+          form.errors?.[field.name]?.filter((e) => e[config.displayValue])?.[0]?.[config.displayValue]
+        }
+      </div>
     </>
   )
 }
 
-export default CompsLayoutsMultiSelect
+export default CompsInputsMultiSelect

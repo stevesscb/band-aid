@@ -1,30 +1,30 @@
 import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
-import { Carousel } from 'react-bootstrap'
 import Image from 'next/image'
 import ReactAudioPlayer from 'react-audio-player'
+import { Carousel } from 'react-bootstrap'
 
 import withAuth from '@/hoc/withAuth'
-import { fetcher } from '@/hooks/_utils'
-import useSWR from 'swr'
+import useMyProfile from '@/hooks/myProfile'
 
-import CompsLayoutsEditModal from '@/components/layouts/EditModal'
+import CompsModalsProfileEdit from '@/components/modals/ProfileEdit'
 
 export function MyIndex() {
-  const { data } = useSWR('/api/private', fetcher)
-  console.log(data)
+  const { myProfile, isLoading, isError, errorMessage } = useMyProfile()
+
+  console.log(myProfile) // TODO: remove
+
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>{errorMessage}</div>
 
   return (
     <div id="profile-container">
-
       <Head>
         <title>BAND AID | MY PROFILE</title>
       </Head>
 
       <Container className="edit-profile p-3">
-
         <div className="top-section">
-
           <div className="image-container">
             <Carousel fade className="edit-carousel-fade">
               <Carousel.Item className="d-flex justify-content-center">
@@ -62,7 +62,7 @@ export function MyIndex() {
           <div className="details-heading">
             <div className="text-center">
               <h2 className="py-3">My Profile</h2>
-              <CompsLayoutsEditModal />
+              <CompsModalsProfileEdit />
             </div>
 
             <div className="details-table">
@@ -82,14 +82,11 @@ export function MyIndex() {
                 <dt>In A Band:</dt>
                 <dd>Yes</dd>
               </dl>
-
             </div>
           </div>
-
         </div>
 
         <div className="bottom">
-
           <div className="bio-container">
             <div className="edit-bio p-3">
               <h6 className="text-center">About Me:</h6>
@@ -117,11 +114,8 @@ export function MyIndex() {
               />
             </div>
           </div>
-
         </div>
-
       </Container>
-
     </div>
   )
 }
