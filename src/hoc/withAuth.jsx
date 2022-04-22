@@ -1,16 +1,16 @@
-import { useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
+import { useEffect } from 'react'
 
 export default function withAuth(Component) {
   return (props) => {
-    const { status } = useSession({
-      required: true,
-      unauthorized: '/api/auth/signin'
-    })
+    const { status } = useSession()
+
+    useEffect(() => {
+      if (status === 'unauthenticated') signIn()
+    }, [status])
 
     if (status === 'loading') return <div>Loading...</div>
 
-    return (
-      <Component {...props} />
-    )
+    return <Component {...props} />
   }
 }

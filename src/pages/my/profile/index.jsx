@@ -4,9 +4,16 @@ import { Carousel } from 'react-bootstrap'
 import Image from 'next/image'
 import ReactAudioPlayer from 'react-audio-player'
 
+import withAuth from '@/hoc/withAuth'
+import { fetcher } from '@/hooks/_utils'
+import useSWR from 'swr'
+
 import CompsLayoutsEditModal from '@/components/layouts/EditModal'
 
-export default function MyIndex() {
+export function MyIndex() {
+  const { data } = useSWR('/api/private', fetcher)
+  console.log(data)
+
   return (
     <div id="profile-container">
 
@@ -118,3 +125,5 @@ export default function MyIndex() {
     </div>
   )
 }
+
+export default withAuth(MyIndex)

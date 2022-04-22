@@ -3,9 +3,6 @@ import { Modal, Button } from 'react-bootstrap'
 import { useState, React } from 'react'
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik'
 import { v4 as uuidv4 } from 'uuid'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import { Switch } from '@mui/material'
 
 import CompsLayoutsMultiSelect from '@/components/layouts/MultiSelect'
 
@@ -19,6 +16,7 @@ const initialValues = {
 }
 
 export default function CompsLayoutsEditModal(props) {
+  // const { data: user } = useSWR('/my/profile', fetcher)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -147,18 +145,18 @@ export default function CompsLayoutsEditModal(props) {
                     />
                   </div>
 
-                  <div className="details-buttons">
-                    <ButtonGroup
-                      orientation="vertical"
-                      aria-label="vertical outlined button group"
-                    >
-                      <FormControlLabel
-                        value="top"
-                        control={<Switch color="primary" />}
-                        label="In a Band?"
-                        labelPlacement="top"
-                      />
-                    </ButtonGroup>
+                  <div className="form-check form-switch mb-3">
+                    <Field
+                      type="checkbox"
+                      className="form-check-input"
+                      name="inBand"
+                    />
+                    <label className="form-check-label">In a Band?</label>
+                    <ErrorMessage
+                      className="invalid-feedback"
+                      name="inBand"
+                      component="div"
+                    />
                   </div>
 
                   <FieldArray name="images">

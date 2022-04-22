@@ -30,14 +30,13 @@ export default function CompsLayoutsNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="navbar-collapse">
           <Nav className="ms-auto">
+            <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
+            <Nav.Link as={Link} href="/private"><a className="nav-link d-table-cell">private</a></Nav.Link>
+            <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
+            <Nav.Link as={Link} href="/my/profile"><a className="nav-link d-table-cell">My Profile</a></Nav.Link>
             {
               session ? (
-                <>
-                  <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
-                  <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
-                  <Nav.Link as={Link} href="/my/profile"><a className="nav-link d-table-cell">My Profile</a></Nav.Link>
-                  <Nav.Link onClick={() => signOut()}>Sign Out</Nav.Link>
-                </>
+                <Nav.Link onClick={() => signOut({ callbackUrl: '/' })}>Sign Out</Nav.Link>
               ) : (
                 <Nav.Link onClick={() => signIn()}>Sign In</Nav.Link>
               )

@@ -1,8 +1,8 @@
 import MultiSelect from 'multiselect-react-dropdown'
 
 function CompsLayoutsMultiSelect({ field, form, config }) {
-  const isInvalid = form.errors?.instruments
-                && form.touched?.instruments
+  const isInvalid = form.errors?.[field.name]
+                && form.touched?.[field.name]
                 && 'custom-invalid'
   return (
     <>
@@ -21,7 +21,7 @@ function CompsLayoutsMultiSelect({ field, form, config }) {
           form.setFieldValue(field.name, values)
         }}
       />
-      <div className={`${isInvalid && 'd-block'} invalid-feedback`}>Email is a required field</div>
+      <div className={`${isInvalid && 'd-block'} invalid-feedback`}>{form.errors?.[field.name]}</div>
     </>
   )
 }

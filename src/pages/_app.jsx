@@ -7,10 +7,10 @@ import appWithSession from '@/hoc/appWithSession'
 import CompsLayoutsNavbar from '@/components/layouts/Navbar'
 import CompsLayoutsFooter from '@/components/layouts/Footer'
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps }) {
   return (
     <>
-      <SessionProvider session={session}>
+      <SessionProvider>
         <CompsLayoutsNavbar />
         <Component {...pageProps} />
         <CompsLayoutsFooter />

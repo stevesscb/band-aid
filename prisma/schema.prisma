@@ -34,7 +34,7 @@ model User {
   image            String?
   displayName      String?
   bio              String?
-  lookingForBand   Boolean?     @default(false)
+  inBand           Boolean?     @default(false)
   accounts         Account[]
   sessions         Session[]
   portraits        Portrait[]
