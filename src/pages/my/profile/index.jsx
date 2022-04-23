@@ -8,11 +8,10 @@ import withAuth from '@/hoc/withAuth'
 import useMyProfile from '@/hooks/myProfile'
 
 import CompsModalsProfileEdit from '@/components/modals/ProfileEdit'
+import { Fragment } from 'react'
 
 export function MyIndex() {
   const { myProfile, isLoading, isError, errorMessage } = useMyProfile()
-
-  console.log(myProfile) // TODO: remove
 
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>{errorMessage}</div>
@@ -27,35 +26,20 @@ export function MyIndex() {
         <div className="top-section">
           <div className="image-container">
             <Carousel fade className="edit-carousel-fade">
-              <Carousel.Item className="d-flex justify-content-center">
-                <Image
-                  className="d-block w-100"
-                  src="/images/musician1.jpg"
-                  alt="First slide"
-                  width={400}
-                  height={400}
-                />
-              </Carousel.Item>
+              {
+                myProfile.portraits.map((portrait) => (
+                  <Carousel.Item key={portrait.id} className="d-flex justify-content-center">
+                    <Image
+                      className="d-block w-100"
+                      src={portrait.file}
+                      alt="First slide"
+                      width={400}
+                      height={400}
+                    />
+                  </Carousel.Item>
 
-              <Carousel.Item className="d-flex justify-content-center">
-                <Image
-                  className="d-block w-100"
-                  src="/images/musician1.jpg"
-                  alt="Second slide"
-                  width={400}
-                  height={400}
-                />
-              </Carousel.Item>
-
-              <Carousel.Item className="d-flex justify-content-center">
-                <Image
-                  className="d-block w-100"
-                  src="/images/musician1.jpg"
-                  alt="Third slide"
-                  width={400}
-                  height={400}
-                />
-              </Carousel.Item>
+                ))
+              }
             </Carousel>
           </div>
 
@@ -68,19 +52,20 @@ export function MyIndex() {
             <div className="details-table">
               <dl className="edit-personal-details">
                 <dt>Username:</dt>
-                <dd>JonDoe2022</dd>
+                <dd>{myProfile.displayName}</dd>
 
                 <dt>Email:</dt>
-                <dd>jondoe2022@gmail.com</dd>
-
-                <dt>Age:</dt>
-                <dd>24</dd>
+                <dd>{myProfile.email}</dd>
 
                 <dt>Instrument:</dt>
-                <dd>Drums, Vocals</dd>
+                {
+                  myProfile.instruments.map((instrument) => (
+                    <dd style={{ display: 'list-item', listStyleType: 'disc' }} className="instrument-table" key={instrument.id}>{instrument.type}</dd>
+                  ))
+                }
 
-                <dt>In A Band:</dt>
-                <dd>Yes</dd>
+                <dt>Currently in A Band:</dt>
+                <dd>{myProfile.inBand}</dd>
               </dl>
             </div>
           </div>
@@ -90,28 +75,26 @@ export function MyIndex() {
           <div className="bio-container">
             <div className="edit-bio p-3">
               <h6 className="text-center">About Me:</h6>
-              <p>d it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including v</p>
+              <p>{myProfile.bio}</p>
             </div>
           </div>
 
           <div className="media-container">
             <div className="edit-media">
-              <h6>Tracks</h6>
-              <ReactAudioPlayer
-                src="my_audio_file.ogg"
-                autoPlay
-                controls
-              />
-              <ReactAudioPlayer
-                src="my_audio_file.ogg"
-                autoPlay
-                controls
-              />
-              <ReactAudioPlayer
-                src="my_audio_file.ogg"
-                autoPlay
-                controls
-              />
+              <h6>Tracks:</h6>
+              {
+                myProfile.tracks.map((track) => (
+                  <>
+                    <p>{track.name}</p>
+                    <ReactAudioPlayer
+                      key={track.id}
+                      src={track.file}
+                      autoPlay
+                      controls
+                    />
+                  </>
+                ))
+              }
             </div>
           </div>
         </div>
