@@ -100,13 +100,13 @@ export default function CompsModalsProfileEdit() {
                   <div className="mb-3">
                     <Field
                       as="textarea"
-                      className={`form-control ${e?.description && t?.description && 'is-invalid'}`}
-                      name="description"
+                      className={`form-control ${e?.bio && t?.bio && 'is-invalid'}`}
+                      name="bio"
                       placeholder="Bio"
                     />
                     <ErrorMessage
                       className="invalid-feedback"
-                      name="description"
+                      name="bio"
                       component="div"
                     />
                   </div>
