@@ -25,16 +25,12 @@ export function PagesMusiciansIndex() {
             musicians.map((musician) => (
               <Col key={musician.id} className="card-body">
                 <Link href="/musicians/" passHref>
-                  <Card className="grow">{
-
-                  musician.portraits.map((portrait) => (
+                  <Card className="grow">
                     <Card.Img
                       className="card-image"
                       variant="top"
-                      src={portrait.id}
+                      src={musician.portraits[1].file}
                     />
-                  ))
-                  }
                     <Card.Body>
                       <Card.Title>{musician.displayName}</Card.Title>
                       <Card.Text>
