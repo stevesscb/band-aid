@@ -121,11 +121,15 @@ color:rgb(255, 255, 255);
     font-size: 2.5em;
   }
 
+  .card-body {
+    cursor: pointer;
+  }
+
 
 
 /*--------------- home page end   -------------------*/
 
-/*--------------- musician page start   -------------------*/
+/*--------------- profile page start   -------------------*/
 
 .media-container {
   text-align: center;
@@ -195,15 +199,29 @@ border-bottom: solid 2px rgb(255, 255, 255);
   }
 
 
-/*--------------- musician page end   -------------------*/
+/*--------------- profile page end   -------------------*/
 
-/*--------------- edit modal start   -------------------*/
+/*--------------- musicians page start   -------------------*/
+#musicians-container {
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  background-color:rgb(78, 78, 78);
+  min-height: 90vh;
+}
 
+.musicians-cards {
+background-color:rgb(44, 44, 44);
+max-width: 1200px;
+border: solid 2px rgb(255, 255, 255);
+}
 
+.musicians-cards h4 {
+  color:rgb(255, 255, 255);
+  text-align: center;
+}
 
-
-
-/*--------------- edit modal end   -------------------*/
+/*--------------- musicians page end   -------------------*/
 
 /*--------------- footer start   -------------------*/
 

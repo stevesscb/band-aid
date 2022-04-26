@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 export default function CompsLayoutsFooter() {
   const router = useRouter()
-  const whitelist = ['/my/profile']
+  const whitelist = ['/my/profile', '/musicians']
 
   return (
     <footer className="align-items-center">
@@ -28,6 +28,7 @@ export default function CompsLayoutsFooter() {
 
         <div id="footer-links" className="d-flex justify-content-center p-3">
           <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
+          <Nav.Link as={Link} href="/musicians"><a className="nav-link d-table-cell">Musicians</a></Nav.Link>
           <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
           <Nav.Link as={Link} href="/my/profile"><a className="nav-link d-table-cell">Profile</a></Nav.Link>
         </div>

@@ -9,7 +9,7 @@ export default function withAuth(Component) {
       if (status === 'unauthenticated') signIn()
     }, [status])
 
-    if (status === 'loading') return <div>Loading...</div>
+    if (status === 'loading') return null // <div>Loading...</div>
 
     return <Component {...props} />
   }

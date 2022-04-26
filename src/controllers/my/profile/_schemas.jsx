@@ -15,6 +15,7 @@ export const schema = Yup.object({
       'Keyboard'
     ]).label('Instrument Type')
   })).min(1).label('Instruments'),
+  inBand: Yup.boolean().label('inBand'),
   portraits: Yup.array().of(Yup.object({
     file: Yup.mixed()
       .required()
@@ -26,7 +27,7 @@ export const schema = Yup.object({
         return true
       })
       .label('Portrait File')
-  })),
+  })).max(4),
   tracks: Yup.array().of(Yup.object({
     file: Yup.mixed()
       .required()
