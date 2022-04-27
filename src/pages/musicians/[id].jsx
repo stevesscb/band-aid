@@ -11,14 +11,7 @@ import CompsSkeletonProfile from '@/components/skeleton/profile'
 import { getUserWithId } from '@/controllers/my/profile/_queries'
 
 export function PagesMusicianShow() {
-  // NOW. you are at the [id] page
-  // NOW. you will have access to params: { id }
-  // and using this id, you will give it to the useMusician
-  // so that the hook will dynamically get us different musicians
-
   const { musician, isError, isLoading, errorMessage } = useMusician()
-
-  console.log(musician)
 
   if (isError) return <div>{errorMessage}</div>
 

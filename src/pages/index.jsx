@@ -5,6 +5,7 @@ import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
 import { Card, Col, Row, Carousel } from 'react-bootstrap'
 import Link from 'next/link'
+import Skeleton from 'react-loading-skeleton'
 
 import useMusicians from '@/hooks/musicians'
 
@@ -39,16 +40,16 @@ export default function Home() {
         <Row xs={1} md={4} className="g-4">
           {
             musicians.map((musician) => (
-              <Col key={musician.id} className="card-body">
+              <Col key={musician.id} className="card-body h-100 w-50">
                 <Link href={`/musicians/${musician.id}`} passHref>
-                  <Card className="grow">
+                  <Card className="grow" style={{ maxWidth: '400px' }}>
                     <Card.Img
                       className="card-image"
                       variant="top"
-                      src={musician.portraits[1].file}
+                      src={musician.portraits[0].file || <Skeleton />}
                     />
                     <Card.Body>
-                      <Card.Title>{musician.displayName}</Card.Title>
+                      <Card.Title>{musician.displayName || <Skeleton />}</Card.Title>
                       <Card.Text>
                         <React.Fragment key={musician.id}>
                           <dt>Instruments:</dt>{
