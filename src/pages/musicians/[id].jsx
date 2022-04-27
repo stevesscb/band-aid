@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
 import Image from 'next/image'
@@ -5,12 +6,19 @@ import ReactAudioPlayer from 'react-audio-player'
 import { Carousel } from 'react-bootstrap'
 
 import withAuth from '@/hoc/withAuth'
-import useMyProfile from '@/hooks/myProfile'
-
+import useMusician from '@/hooks/musician'
 import CompsSkeletonProfile from '@/components/skeleton/profile'
+import { getUserWithId } from '@/controllers/my/profile/_queries'
 
-export function PagesMusicianIdIndex() {
-  const { myProfile, isLoading, isError, errorMessage } = useMyProfile()
+export function PagesMusicianShow() {
+  // NOW. you are at the [id] page
+  // NOW. you will have access to params: { id }
+  // and using this id, you will give it to the useMusician
+  // so that the hook will dynamically get us different musicians
+
+  const { musician, isError, isLoading, errorMessage } = useMusician()
+
+  console.log(musician)
 
   if (isError) return <div>{errorMessage}</div>
 
@@ -30,7 +38,7 @@ export function PagesMusicianIdIndex() {
                 <div className="image-container">
                   <Carousel fade className="edit-carousel-fade">
                     {
-                myProfile.portraits.map((portrait) => (
+                musician.portraits.map((portrait) => (
                   <Carousel.Item key={portrait.id} className="d-flex justify-content-center">
                     <Image
                       className="d-block w-100"
@@ -54,20 +62,20 @@ export function PagesMusicianIdIndex() {
                   <div className="details-table">
                     <dl className="edit-personal-details">
                       <dt>Username:</dt>
-                      <dd>{myProfile.displayName}</dd>
+                      <dd>{musician.displayName}</dd>
 
                       <dt>Email:</dt>
-                      <dd>{myProfile.email}</dd>
+                      <dd>{musician.email}</dd>
 
                       <dt>Instrument:</dt>
                       {
-                  myProfile.instruments.map((instrument) => (
+                  musician.instruments.map((instrument) => (
                     <dd style={{ display: 'list-item', listStyleType: 'disc' }} className="instrument-table" key={instrument.id}>{instrument.type}</dd>
                   ))
                 }
 
                       <dt>Currently in A Band:</dt>
-                      <dd>{myProfile.inBand}</dd>
+                      <dd>{musician.inBand}</dd>
                     </dl>
                   </div>
                 </div>
@@ -77,7 +85,7 @@ export function PagesMusicianIdIndex() {
                 <div className="bio-container">
                   <div className="edit-bio p-3">
                     <h6 className="text-center">About Me:</h6>
-                    <p>{myProfile.bio}</p>
+                    <p>{musician.bio}</p>
                   </div>
                 </div>
 
@@ -85,15 +93,15 @@ export function PagesMusicianIdIndex() {
                   <div className="edit-media">
                     <h6>Tracks:</h6>
                     {
-                myProfile.tracks.map((track) => (
-                  <>
+                musician.tracks.map((track) => (
+                  <React.Fragment key={track.id}>
                     <p>{track.name}</p>
                     <ReactAudioPlayer
                       key={track.id}
                       src={track.file}
                       controls
                     />
-                  </>
+                  </React.Fragment>
                 ))
               }
                   </div>
@@ -108,4 +116,23 @@ export function PagesMusicianIdIndex() {
   )
 }
 
-export default withAuth(PagesMusicianIdIndex)
+export function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking'
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const musician = await getUserWithId(params.id)
+
+  return {
+    props: {
+      fallback: {
+        [`/api/musicians/${params.id}`]: musician
+      }
+    }
+  }
+}
+
+export default withAuth(PagesMusicianShow)

@@ -8,9 +8,10 @@ import withAuth from '@/hoc/withAuth'
 import useMusicians from '@/hooks/musicians'
 
 export function PagesMusiciansIndex() {
+  // what page are you at?
+  // you are the the index page.... it does not have id
+  // your primary location for id is the musician itself
   const { musicians } = useMusicians()
-
-  console.log(musicians)
 
   return (
     <div id="musicians-container">
@@ -24,7 +25,7 @@ export function PagesMusiciansIndex() {
           {
             musicians.map((musician) => (
               <Col key={musician.id} className="card-body">
-                <Link href="/musicians/" passHref>
+                <Link href={`/musicians/${musician.id}`} passHref>
                   <Card className="grow">
                     <Card.Img
                       className="card-image"
