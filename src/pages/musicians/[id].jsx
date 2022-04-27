@@ -57,6 +57,12 @@ export function PagesMusicianShow() {
                 <div className="details-heading">
                   <div className="text-center">
                     <h2 className="py-3">Profile</h2>
+                    <button
+                      type="button"
+                      className="btn btn-success"
+                    >
+                      Message
+                    </button>
                   </div>
 
                   <div className="details-table">
@@ -75,7 +81,7 @@ export function PagesMusicianShow() {
                 }
 
                       <dt>Currently in A Band:</dt>
-                      <dd>{musician.inBand}</dd>
+                      <dd>{musician.inBand.toString()}</dd>
                     </dl>
                   </div>
                 </div>

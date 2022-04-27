@@ -21,16 +21,16 @@ export function PagesMusiciansIndex() {
 
       <Container className="musicians-cards">
         <h4 className="p-3">All Musicians</h4>
-        <Row xs={1} md={3} className="g-6">
+        <Row xs={1} sm={3} className="g-6">
           {
             musicians.map((musician) => (
               <Col key={musician.id} className="card-body">
                 <Link href={`/musicians/${musician.id}`} passHref>
-                  <Card className="grow">
+                  <Card className="grow h-100 w-50">
                     <Card.Img
                       className="card-image"
                       variant="top"
-                      src={musician.portraits[1].file}
+                      src={musician.portraits[0].file}
                     />
                     <Card.Body>
                       <Card.Title>{musician.displayName}</Card.Title>
