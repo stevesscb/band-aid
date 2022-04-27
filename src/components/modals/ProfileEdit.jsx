@@ -40,6 +40,7 @@ export default function CompsModalsProfileEdit() {
             email: myProfile.email || '',
             bio: myProfile.bio || '',
             instruments: myProfile.instruments,
+            inBand: myProfile.inBand,
             portraits: myProfile.portraits.length > 0 ? myProfile.portraits : [{ file: '' }],
             tracks: myProfile.tracks.length > 0 ? myProfile.tracks : [{ file: '' }]
           }}

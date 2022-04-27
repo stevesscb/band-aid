@@ -1,10 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @next/next/no-page-custom-font */
+import React from 'react'
 import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
-import { Card, Col, Row } from 'react-bootstrap'
+import { Card, Col, Row, Carousel } from 'react-bootstrap'
+import Link from 'next/link'
+import Skeleton from 'react-loading-skeleton'
+
+import useMusicians from '@/hooks/musicians'
 
 export default function Home() {
+  const { musicians } = useMusicians()
+
   return (
     <div id="homePageContainer">
 
@@ -31,24 +38,50 @@ export default function Home() {
         <h6>Newest Members</h6>
 
         <Row xs={1} md={4} className="g-4">
-          {Array.from({ length: 4 }).map((_, idx) => (
-            <Col key={idx}>
-              <Card className="grow">
-                <Card.Img className="card-image" variant="top" src="/images/musician1.jpg" />
-                <Card.Body>
-                  <Card.Title>Card title</Card.Title>
-                  <Card.Text>
-                    This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit longer.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
+          {
+            musicians.map((musician) => (
+              <Col key={musician.id} className="card-body h-100 w-50">
+                <Link href={`/musicians/${musician.id}`} passHref>
+                  <Card className="grow" style={{ maxWidth: '400px' }}>
+                    <Card.Img
+                      className="card-image"
+                      variant="top"
+                      src={musician.portraits[0].file || <Skeleton />}
+                    />
+                    <Card.Body>
+                      <Card.Title>{musician.displayName || <Skeleton />}</Card.Title>
+                      <Card.Text>
+                        <React.Fragment key={musician.id}>
+                          <dt>Instruments:</dt>{
+                            musician.instruments.map((instrument) => (
+                              <React.Fragment key={instrument.id}>
+                                <dd>
+                                  {instrument.type}
+                                </dd>
+                              </React.Fragment>
+                            ))
+                            }
+                          <dt>In a band?</dt>
+                          <dd>{musician.inBand.toString()}</dd>
+                        </React.Fragment>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            ))
+          }
         </Row>
 
         <div className="d-flex justify-content-center p-3">
-          <button type="button" className="grow-btn btn btn-light">See all Musicians</button>
+          <Link href="/musicians" passHref>
+            <button
+              type="button"
+              className="grow-btn btn btn-light"
+            >
+              See all Musicians
+            </button>
+          </Link>
         </div>
       </Container>
 
