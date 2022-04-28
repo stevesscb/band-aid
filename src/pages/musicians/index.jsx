@@ -55,7 +55,7 @@ export function PagesMusiciansIndex() {
               </Col>
             )) || (
               <Col className="card-body h-100 w-50">
-                <Card className="grow" style={{ maxWidth: '400px' }}>
+                <Card className="grow" style={{ maxWidth: '400px', maxHeight: '800px' }}>
                   <Card.Img>
                     <Skeleton
                       width={400}
