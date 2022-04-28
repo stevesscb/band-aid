@@ -13,6 +13,8 @@ import { getUserWithId } from '@/controllers/my/profile/_queries'
 export function PagesMusicianShow() {
   const { musician, isError, errorMessage } = useMusician()
 
+  console.log(musician)
+
   if (isError) return <div>{errorMessage}</div>
 
   return (

@@ -36,18 +36,20 @@ export default function Home() {
 
       <Container className="cards">
         <h6>Newest Members</h6>
-
         <Row xs={1} md={4} className="g-4">
           {
             musicians.map((musician) => (
-              <Col key={musician.id} className="card-body h-100 w-50">
+              <Col key={musician.id} className="card-body">
                 <Link href={`/musicians/${musician.id}`} passHref>
-                  <Card className="grow" style={{ maxWidth: '400px' }}>
-                    <Card.Img
-                      className="card-image"
-                      variant="top"
-                      src={musician.portraits[0].file}
-                    />
+                  <Card className="grow">
+                    <div className="card-image ratio ratio-4x3">
+                      <Card.Img
+                        className="w-100 h-100"
+                        style={{ objectFit: 'cover' }}
+                        variant="top"
+                        src={musician.portraits[0].file}
+                      />
+                    </div>
                     <Card.Body>
                       <Card.Title>{musician.displayName}</Card.Title>
                       <Card.Text>
@@ -70,8 +72,8 @@ export default function Home() {
                 </Link>
               </Col>
             )) || (
-              <Col className="card-body h-100 w-50">
-                <Card className="grow" style={{ maxWidth: '400px' }}>
+              <Col className="card-body">
+                <Card className="grow">
                   <Card.Img>
                     <Skeleton
                       width={400}
