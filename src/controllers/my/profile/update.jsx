@@ -11,8 +11,7 @@ import uploadFileAsync from '@/controllers/_helpers/uploadFile'
 const controllersMyProfileUpdate = async (req, res) => {
   try {
     const session = await getSession({ req })
-    const { body } = req
-    const verifiedData = await schema.validate(body, { abortEarly: false, stripUnknown: true })
+    const verifiedData = await schema.validate(req.body, { abortEarly: false, stripUnknown: true })
     await uploadFileAsync(verifiedData, req)
     const updatedUser = await prisma.user.update({
       where: { id: session.user.id },
