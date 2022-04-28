@@ -46,10 +46,10 @@ export default function Home() {
                     <Card.Img
                       className="card-image"
                       variant="top"
-                      src={musician.portraits[0].file || <Skeleton />}
+                      src={musician.portraits[0].file}
                     />
                     <Card.Body>
-                      <Card.Title>{musician.displayName || <Skeleton />}</Card.Title>
+                      <Card.Title>{musician.displayName}</Card.Title>
                       <Card.Text>
                         <React.Fragment key={musician.id}>
                           <dt>Instruments:</dt>{
@@ -69,7 +69,21 @@ export default function Home() {
                   </Card>
                 </Link>
               </Col>
-            ))
+            )) || (
+              <Col className="card-body h-100 w-50">
+                <Card className="grow" style={{ maxWidth: '400px' }}>
+                  <Card.Img>
+                    <Skeleton
+                      width={400}
+                      height={400}
+                    />
+                  </Card.Img>
+                  <Card.Body>
+                    <Skeleton count={8} />
+                  </Card.Body>
+                </Card>
+              </Col>
+            )
           }
         </Row>
 
