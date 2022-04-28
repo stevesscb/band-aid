@@ -25,13 +25,13 @@ export function PagesMusiciansIndex() {
             musicians.map((musician) => (
               <Col key={musician.id} className="card-body">
                 <Link href={`/musicians/${musician.id}`} passHref>
-                  <Card className="grow">
+                  <Card className="grow h-100">
                     <div className="card-image ratio ratio-4x3">
                       <Card.Img
                         className="w-100 h-100"
                         style={{ objectFit: 'cover' }}
                         variant="top"
-                        src={musician.portraits[0].file || <Skeleton height={400} width="80%" />}
+                        src={musician.portraits[0]?.file || <Skeleton height={400} width="80%" />}
                       />
                     </div>
                     <Card.Body>
