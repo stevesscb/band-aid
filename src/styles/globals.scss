@@ -3,6 +3,7 @@
 @import "~animate.css";
 @import '~react-loading-skeleton/dist/skeleton';
 
+@import './components/Skeleton.scss';
 @import "./components/MultiSelect.scss";
 
 .grow.card, .grow-btn {

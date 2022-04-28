@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Container from 'react-bootstrap/Container'
 import { Card, Col, Row } from 'react-bootstrap'
 import Link from 'next/link'
+import Skeleton from 'react-loading-skeleton'
 
 import withAuth from '@/hoc/withAuth'
 import useMusicians from '@/hooks/musicians'
@@ -27,10 +28,10 @@ export function PagesMusiciansIndex() {
                     <Card.Img
                       className="card-image"
                       variant="top"
-                      src={musician.portraits[0].file}
+                      src={musician.portraits[0].file || <Skeleton height={400} width="80%" />}
                     />
                     <Card.Body>
-                      <Card.Title>{musician.displayName}</Card.Title>
+                      <Card.Title>{musician.displayName || <Skeleton />}</Card.Title>
                       <Card.Text>
                         <React.Fragment key={musician.id}>
 
