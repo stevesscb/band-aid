@@ -24,7 +24,7 @@ function CompsInputsMultiSelect({ field, form, config }) {
       />
       <div className={`${isInvalid && 'd-block'} invalid-feedback`}>
         {
-          form.errors?.[field.name]?.filter((e) => e[config.displayValue])?.[0]?.[config.displayValue]
+          form.errors?.[field.name]?.filter?.((e) => e[config.displayValue])?.[0]?.[config.displayValue]
         }
       </div>
     </>
