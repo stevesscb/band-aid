@@ -15,6 +15,7 @@ export function PagesMusiciansIndex() {
     <div id="musicians-container">
       <Head>
         <title>BAND AID | MUSICIANS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Container className="musicians-cards">

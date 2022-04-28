@@ -21,6 +21,7 @@ export function PagesMusicianShow() {
     <div id="profile-container">
       <Head>
         <title>BAND AID | PROFILE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Container className="edit-profile p-3">
