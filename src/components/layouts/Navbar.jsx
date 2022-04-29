@@ -32,7 +32,7 @@ export default function CompsLayoutsNavbar() {
           <Nav className="ms-auto">
             <Nav.Link as={Link} href="/"><a className="nav-link d-table-cell">Home</a></Nav.Link>
             <Nav.Link as={Link} href="/musicians"><a className="nav-link d-table-cell">Musicians</a></Nav.Link>
-            <Nav.Link as={Link} href="/swr"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
+            <Nav.Link as={Link} href="/my/messages"><a className="nav-link d-table-cell">Messages</a></Nav.Link>
             <Nav.Link as={Link} href="/my/profile"><a className="nav-link d-table-cell">My Profile</a></Nav.Link>
             {
               session ? (
